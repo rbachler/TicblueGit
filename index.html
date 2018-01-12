@@ -1,0 +1,52 @@
+<!doctype html>
+<meta charset="utf-8">
+<style media="screen">
+
+  #text {
+    width: 25%;
+    float: left;
+    margin-top: 7%;
+    margin-left: 3%;
+  }
+
+  #viz {
+    width: 65%;
+    float: right;
+    margin: 0 auto;
+  }
+
+</style>
+
+<script src="d3.js"></script>
+<script src="d3plus.js"></script>
+
+<div id="text">
+  <h2>Pie chart</h2>
+  <p>Pie Charts are really easy to make with d3plus. The data only needs to have .id() and .size() values. In general, it operates very similar to tree maps, including data nesting and grouping.</p>
+  <a href="https://d3plus.org/examples/basic/33fc382f1f1913682ec1/">Pie chart on D3plus</a>
+</div>
+
+<div id="viz"></div>
+
+<script>
+
+    d3.json("Entregas_MCPA_2016.json", function(error, ourdata) {
+      if (error) return console.error(error);
+      make_viz(ourdata);
+    });
+
+    function make_viz(data){
+      var visualization = d3plus.viz()
+          .container("#viz")
+          .data(data)
+          .type("pie")
+          .id("Nombre Establecimiento") // Escoger nombre categoria
+          .size("Total Estudiantes") // Tamaño de la categoria
+          .draw()
+    }
+
+    //// Recomendación:
+    // id,Nombre Comuna
+    // size, Total Estudiantes
+
+</script>
